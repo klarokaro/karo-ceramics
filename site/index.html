@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en">
+<script>document.documentElement.classList.add("js")</script>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KARO ceramics — hand-thrown landmark tumblers</title>
+<meta name="description" content="Hand-thrown ceramic tumblers carved with Northern California's landmarks — Mt. Tamalpais, Muir Woods, Lake Tahoe and the Golden Gate. Made in the Bay Area.">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f1ece3;
+    --paper-deep: #e7dfd2;
+    --birch: #ddd3c3;
+    --ink: #2b2a27;
+    --ink-soft: #5f5a52;
+    --clay: #a8603a;
+    --clay-deep: #8c4d2c;
+    --redwood: #3e4a3d;
+    --line: #cfc5b5;
+    --serif: "Fraunces", Georgia, serif;
+    --sans: "Work Sans", system-ui, sans-serif;
+    --gutter: clamp(20px, 5vw, 64px);
+    --max: 1240px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 400 17px/1.65 var(--sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  /* paper grain */
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: .35;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .38 0 0 0 0 .3 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+
+  /* ---------- header ---------- */
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in srgb, var(--paper) 92%, transparent);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid transparent;
+    transition: border-color .3s;
+  }
+  header.scrolled { border-color: var(--line); }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+  .logo { text-decoration: none; display: flex; align-items: center; gap: 14px; }
+  .logo .mark { width: 50px; height: 50px; color: var(--ink); }
+  .logo i { font: italic 300 21px/1 var(--serif); color: var(--ink-soft); }
+  .nav ul { list-style: none; display: flex; gap: 34px; margin: 0; padding: 0; align-items: center; }
+  .nav ul a { text-decoration: none; font-size: 15px; letter-spacing: .04em; }
+  .nav ul a:not(.btn):hover { color: var(--clay); }
+  .btn {
+    display: inline-flex; align-items: center; gap: .6em;
+    padding: 12px 22px; border-radius: 999px;
+    background: var(--ink); color: var(--paper) !important;
+    text-decoration: none; font: 500 15px/1 var(--sans); letter-spacing: .03em;
+    transition: background .2s;
+  }
+  .btn:hover { background: var(--clay-deep); }
+  .btn.ghost { background: transparent; color: var(--ink) !important; box-shadow: inset 0 0 0 1px var(--ink); }
+  .btn.ghost:hover { background: var(--ink); color: var(--paper) !important; }
+  .btn svg { width: 14px; height: 14px; }
+  .menu-toggle { display: none; background: none; border: 0; font: 500 15px var(--sans); color: var(--ink); cursor: pointer; padding: 8px 0; }
+
+  /* ---------- hero ---------- */
+  .hero { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 96px); align-items: center; padding: clamp(32px, 6vw, 72px) 0 clamp(48px, 8vw, 110px); }
+  .eyebrow { font: 500 12px/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--clay); margin: 0 0 22px; }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 300; letter-spacing: -.01em; margin: 0; }
+  h1 { font-size: clamp(44px, 6.2vw, 84px); line-height: 1.02; }
+  h1 em, h2 em { font-style: italic; color: var(--redwood); }
+  .hero p.lede { font-size: 19px; color: var(--ink-soft); max-width: 30em; margin: 28px 0 38px; }
+  .hero .ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+  .hero figure { margin: 0; position: relative; }
+  .hero figure img { width: 100%; height: min(calc(100vh - 190px), 760px); min-height: 460px; object-fit: cover; object-position: 50% 78%; border-radius: 2px; }
+  figcaption { font-size: 13px; color: var(--ink-soft); margin-top: 12px; letter-spacing: .02em; }
+
+  /* ridge divider: the Mt Tam line */
+  .ridge { display: block; width: 100%; height: 70px; color: var(--ink); }
+  .ridge path { fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linejoin: round; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+
+  section { padding: clamp(64px, 9vw, 120px) 0; }
+  .section-head { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; margin-bottom: 56px; }
+  h2 { font-size: clamp(34px, 4.2vw, 56px); line-height: 1.08; }
+  .section-head p { color: var(--ink-soft); margin: 0; max-width: 32em; }
+
+  /* ---------- landmark collection ---------- */
+  .landmarks { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 2vw, 28px); }
+  .landmark { cursor: pointer; text-align: left; background: none; border: 0; padding: 0; color: inherit; font: inherit; }
+  .landmark .photo { position: relative; aspect-ratio: 4/5; overflow: hidden; background: var(--birch); border-radius: 2px; }
+  .landmark .photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.2,.7,.2,1); }
+  .landmark:hover .photo img { transform: scale(1.04); }
+  .landmark .meta { display: flex; align-items: center; gap: 14px; padding: 18px 2px 0; }
+  .landmark .icon { width: 58px; height: 30px; flex: none; color: var(--redwood); }
+  .landmark h3 { font-size: 24px; line-height: 1.1; }
+  .landmark .sub { font-size: 14px; color: var(--ink-soft); margin: 4px 0 0; }
+  symbol path { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* coming-soon placeholder tile */
+  .photo.soon { display: grid; place-items: center; background:
+      radial-gradient(ellipse at 50% 120%, var(--paper-deep), transparent 60%), var(--birch); }
+  .photo.soon .icon { width: 62%; height: auto; color: var(--ink-soft); opacity: .7; }
+  .photo.soon span { position: absolute; bottom: 18px; left: 0; right: 0; text-align: center; font: italic 300 16px var(--serif); color: var(--ink-soft); }
+  /* temporary marker for photos to be reshot — delete this rule when final photos are in */
+  .placeholder-tag { position: absolute; top: 12px; left: 12px; background: rgba(241,236,227,.9); font: 500 10px/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; padding: 7px 9px; border-radius: 2px; color: var(--ink-soft); }
+
+  /* ---------- on location band ---------- */
+  .location { background: var(--redwood); color: var(--paper); }
+  .location .grid { display: grid; grid-template-columns: 1.1fr 1fr 1fr; gap: clamp(16px, 2vw, 28px); align-items: end; }
+  .location h2 em { color: #d9b48f; }
+  .location p { color: #cfd3c8; max-width: 26em; }
+  .location img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 2px; }
+  .location .tall img { aspect-ratio: 3/4.4; }
+  .location .eyebrow { color: #d9b48f; }
+
+  /* ---------- studio gallery ---------- */
+  .gallery { columns: 3; column-gap: clamp(16px, 2vw, 28px); }
+  .gallery button { all: unset; cursor: zoom-in; display: block; break-inside: avoid; margin-bottom: clamp(16px, 2vw, 28px); }
+  .gallery img { width: 100%; border-radius: 2px; transition: opacity .3s; }
+  .gallery button:hover img { opacity: .88; }
+  .gallery .cap { display: block; font-size: 13px; color: var(--ink-soft); padding-top: 10px; }
+  .gallery-foot { text-align: center; margin-top: 48px; }
+
+  /* ---------- about ---------- */
+  .about { border-top: 1px solid var(--line); }
+  .about .grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 96px); align-items: center; }
+  .about .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .about .pair img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 2px; }
+  .about .pair img:nth-child(2) { margin-top: 60px; }
+  .about p { color: var(--ink-soft); }
+  .about p:first-of-type { margin-top: 28px; }
+
+  /* ---------- footer ---------- */
+  footer { background: var(--ink); color: var(--paper); padding: 80px 0 40px; }
+  footer .top { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; }
+  .footer-mark { display: block; width: 72px; height: 72px; color: var(--paper); margin-bottom: 28px; }
+  footer h2 { font-size: clamp(30px, 3.4vw, 44px); }
+  footer h4 { font: 500 12px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: #a39d92; margin: 8px 0 18px; }
+  footer ul { list-style: none; margin: 0; padding: 0; }
+  footer li { margin-bottom: 10px; }
+  footer a { text-decoration: none; }
+  footer a:hover { color: #d9b48f; }
+  footer .btn { background: var(--paper); color: var(--ink) !important; margin-top: 28px; }
+  footer .btn:hover { background: #d9b48f; }
+  footer .ridge { color: #5a574f; margin: 64px 0 24px; height: 50px; }
+  footer .small { font-size: 13px; color: #8f897e; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+  /* ---------- lightbox ---------- */
+  dialog { border: 0; padding: 0; background: var(--paper); color: var(--ink); max-width: min(1100px, 94vw); width: 100%; border-radius: 3px; }
+  dialog::backdrop { background: rgba(35, 33, 30, .72); }
+  .lb { display: grid; grid-template-columns: 1.25fr 1fr; min-height: min(80vh, 720px); }
+  .lb-img { background: var(--birch); position: relative; }
+  .lb-img img { width: 100%; height: 100%; max-height: 86vh; object-fit: cover; }
+  .lb-body { padding: 48px 44px; display: flex; flex-direction: column; }
+  .lb-body h3 { font-size: 36px; line-height: 1.1; margin-bottom: 14px; }
+  .lb-body p { color: var(--ink-soft); margin: 0 0 24px; }
+  .lb-thumbs { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 28px; }
+  .lb-thumbs button { all: unset; cursor: pointer; width: 64px; aspect-ratio: 4/5; overflow: hidden; border-radius: 2px; opacity: .55; outline-offset: 2px; }
+  .lb-thumbs button[aria-current="true"] { opacity: 1; outline: 1px solid var(--ink); }
+  .lb-thumbs img { width: 100%; height: 100%; object-fit: cover; }
+  .lb-body .btn { align-self: flex-start; margin-top: auto; }
+  .lb-close { position: absolute; top: 14px; right: 16px; background: var(--paper); border: 0; width: 38px; height: 38px; border-radius: 50%; font-size: 22px; line-height: 1; cursor: pointer; color: var(--ink); z-index: 2; }
+  .lb-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(241,236,227,.85); border: 0; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 18px; color: var(--ink); }
+  .lb-nav.prev { left: 12px; } .lb-nav.next { right: 12px; }
+
+  /* reveal on scroll */
+  .js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1); }
+  .js .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 960px) {
+    .landmarks { grid-template-columns: repeat(2, 1fr); }
+    .gallery { columns: 2; }
+    .location .grid { grid-template-columns: 1fr 1fr; }
+    .location .grid > div:first-child { grid-column: 1 / -1; }
+    footer .top { grid-template-columns: 1fr 1fr; }
+    footer .top > div:first-child { grid-column: 1 / -1; }
+  }
+  @media (max-width: 760px) {
+    .menu-toggle { display: block; }
+    .nav ul { display: none; position: absolute; top: 76px; left: 0; right: 0; flex-direction: column; gap: 0; background: var(--paper); border-bottom: 1px solid var(--line); padding: 8px var(--gutter) 20px; align-items: stretch; }
+    .nav ul.open { display: flex; }
+    .nav ul li a:not(.btn) { display: block; padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .nav ul .btn { margin-top: 16px; justify-content: center; }
+    .hero, .section-head, .about .grid { grid-template-columns: 1fr; }
+    .hero figure img { height: 62vh; min-height: 380px; }
+    .section-head { gap: 16px; margin-bottom: 36px; }
+    .lb { grid-template-columns: 1fr; }
+    .lb-img img { max-height: 55vh; }
+    .lb-body { padding: 28px 24px; }
+  }
+  @media (max-width: 480px) {
+    .landmarks { gap: 14px; }
+    .landmark h3 { font-size: 19px; }
+    .landmark .icon { display: none; }
+    .gallery { columns: 1; }
+    footer .top { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Reusable line icons, drawn to echo the carved lines on the pots -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="logo" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="2.9"><rect x="1.75" y="1.75" width="96.5" height="96.5" stroke-width="3.5"/><path d="M16.9 18.4 H43.9 M30.4 18.4 L17.6 43.1 M30.4 18.4 L43.1 43.1 M55.7 43.1 V18.4 H85.9 V32.4 H55.7 M77.5 32.4 L82.7 43.1 M17.6 80.4 L30.4 53.7 L43.1 80.4 M22.7 69.6 H38.1"/><circle cx="70.8" cy="67.6" r="13.6" stroke-width="2.3"/></g></symbol>
+  <symbol id="i-tam" viewBox="0 0 120 60"><path d="M3 50 C14 48 20 45 28 41 S40 34 46 29 S54 21 58 17 L61 19 L64 15 L68 20 C74 26 82 31 92 37 S108 45 117 48"/></symbol>
+  <symbol id="i-redwoods" viewBox="0 0 120 60"><path d="M40 56 V6 M40 12 l-4 4 M40 12 l4 4 M40 19 l-6 6 M40 19 l6 6 M40 27 l-7 7 M40 27 l7 7 M40 35 l-8 8 M40 35 l8 8 M60 56 V16 M60 21 l-4 4 M60 21 l4 4 M60 28 l-5 5 M60 28 l5 5 M60 36 l-6 6 M60 36 l6 6 M80 56 V2 M80 8 l-4 4 M80 8 l4 4 M80 15 l-6 6 M80 15 l6 6 M80 23 l-7 7 M80 23 l7 7 M80 32 l-8 8 M80 32 l8 8 M24 56 C40 54 70 55 96 56"/></symbol>
+  <symbol id="i-tahoe" viewBox="0 0 120 60"><path d="M3 38 L24 18 L34 27 L50 9 L64 24 L72 18 L90 34 L100 28 L117 38 M3 38 H117 M22 46 q6 -3 12 0 t12 0 M58 46 q6 -3 12 0 t12 0 M38 53 q6 -3 12 0 t12 0"/></symbol>
+  <symbol id="i-ggb" viewBox="0 0 120 60"><path d="M36 56 V6 M44 56 V6 M36 13 H44 M36 23 H44 M76 56 V6 M84 56 V6 M76 13 H84 M76 23 H84 M2 40 C16 38 28 30 36 8 M44 8 C52 34 68 34 76 8 M84 8 C92 30 104 38 118 40 M2 40 H118 M8 48 q5 -2 10 0 M96 50 q5 -2 10 0"/></symbol>
+</svg>
+
+<header id="top">
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="KARO ceramics, home"><svg class="mark" aria-hidden="true"><use href="#logo"/></svg><i>ceramics</i></a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="menu">Menu</button>
+    <ul id="menu">
+      <li><a href="#collection">Tumblers</a></li>
+      <li><a href="#studio">Studio</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a class="btn" href="https://www.etsy.com/shop/CeramicsbyKaro" target="_blank" rel="noopener">Shop on Etsy
+        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 10 L10 4 M5 4 H10 V9"/></svg></a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="hero">
+      <div>
+        <p class="eyebrow">Hand-thrown in the Bay Area</p>
+        <h1>Carry the places <em>you love.</em></h1>
+        <p class="lede">Porcelain tumblers carved by hand with the outlines of Northern California's landmarks: the ridge of Mt. Tamalpais, the redwoods of Muir Woods, Lake Tahoe and the Golden Gate.</p>
+        <div class="ctas">
+          <a class="btn" href="https://www.etsy.com/shop/CeramicsbyKaro" target="_blank" rel="noopener">Shop on Etsy
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 10 L10 4 M5 4 H10 V9"/></svg></a>
+          <a class="btn ghost" href="#collection">See the collection</a>
+        </div>
+      </div>
+      <figure>
+        <img src="images/tam-sunset-hero.jpg" alt="White porcelain tumbler carved with the Mt. Tamalpais ridgeline, sitting on a weathered fence post with the real mountain behind it at sunset" width="960" height="1280">
+        <figcaption>The Mt. Tam tumbler, with the mountain itself behind it.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="wrap"><svg class="ridge" viewBox="0 0 1200 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0 64 C120 62 220 58 330 52 S470 40 540 30 S600 16 628 12 L640 15 L652 8 L668 17 C700 26 760 36 860 46 S1060 60 1200 63"/></svg></div>
+
+  <section id="collection">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>The Landmark <em>Collection</em></h2>
+        <p>Each tumbler is thrown on the wheel, then carved by hand with a single line that traces a place, so no two are quite the same. Sized for coffee, wine or a handful of wildflowers.</p>
+      </div>
+      <div class="landmarks">
+        <button class="landmark reveal" data-set="tam">
+          <div class="photo"><img src="images/tam-studio-1.jpg" alt="Mt. Tamalpais tumbler on birch" loading="lazy"><span class="placeholder-tag">Placeholder</span></div>
+          <div class="meta"><svg class="icon"><use href="#i-tam"/></svg><div><h3>Mt. Tamalpais</h3><p class="sub">The Sleeping Lady ridge</p></div></div>
+        </button>
+        <button class="landmark reveal" data-set="muir">
+          <div class="photo"><img src="images/muirwoods-1.jpg" alt="Muir Woods tumbler carved with three redwoods" loading="lazy"><span class="placeholder-tag">Placeholder</span></div>
+          <div class="meta"><svg class="icon"><use href="#i-redwoods"/></svg><div><h3>Muir Woods</h3><p class="sub">Coast redwoods</p></div></div>
+        </button>
+        <button class="landmark reveal" data-set="tahoe">
+          <div class="photo soon"><svg class="icon" viewBox="0 0 120 60"><use href="#i-tahoe"/></svg><span>Photos coming soon</span></div>
+          <div class="meta"><svg class="icon"><use href="#i-tahoe"/></svg><div><h3>Lake Tahoe</h3><p class="sub">Sierra peaks &amp; blue water</p></div></div>
+        </button>
+        <button class="landmark reveal" data-set="ggb">
+          <div class="photo soon"><svg class="icon" viewBox="0 0 120 60"><use href="#i-ggb"/></svg><span>Photos coming soon</span></div>
+          <div class="meta"><svg class="icon"><use href="#i-ggb"/></svg><div><h3>Golden Gate</h3><p class="sub">Towers &amp; cables</p></div></div>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="location">
+    <div class="wrap grid">
+      <div class="reveal">
+        <p class="eyebrow">On location</p>
+        <h2>Made to be <em>taken home</em> to the place itself.</h2>
+        <p>Every design starts from a real view: the Tam ridge from the Marin marshes at golden hour, the redwoods of Muir Woods, the Sierra from the shore of the lake.</p>
+      </div>
+      <div class="reveal tall"><img src="images/tam-sunset-2.jpg" alt="Mt. Tam tumbler on a fence rail, marsh and mountain behind at sunset" loading="lazy"></div>
+      <div class="reveal"><img src="images/tam-sunset-3.jpg" alt="Mt. Tam tumbler in soft focus with the mountain behind" loading="lazy"></div>
+    </div>
+  </section>
+
+  <section id="studio">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>Also from <em>the studio</em></h2>
+        <p>Alongside the tumblers: small batches of vases, bowls and one-off pieces. Glazes in ocean blue, cobalt brushwork, crackle and speckled clay. Available pieces are listed on Etsy.</p>
+      </div>
+      <div class="gallery" id="gallery"></div>
+      <div class="gallery-foot reveal"><a class="btn ghost" href="https://www.etsy.com/shop/CeramicsbyKaro" target="_blank" rel="noopener">See what's available on Etsy</a></div>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="wrap grid">
+      <div class="pair reveal">
+        <img src="images/studio-hand-cup.jpg" alt="Holding a freshly finished cup in the studio" loading="lazy">
+        <img src="images/studio-night-planter.jpg" alt="Dark clay planter with a carved white ridgeline" loading="lazy">
+      </div>
+      <div class="reveal">
+        <p class="eyebrow">About</p>
+        <h2>Hi, I'm <em>Karo.</em></h2>
+        <p>I'm a ceramicist based in the Bay Area. Everything here is thrown, trimmed and carved by hand in my small home studio.</p>
+        <p>The landmark tumblers began with Mt. Tam, the mountain I see every day. I wanted a cup that held a little of that view. Since then the collection has grown to the places people here love most.</p>
+        <p>Have a place that means something to you? I'm always open to custom designs.</p>
+        <p><a class="btn ghost" href="mailto:hello@example.com">Ask about a custom piece</a></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <svg class="footer-mark" aria-hidden="true"><use href="#logo"/></svg>
+        <h2>Find your place.</h2>
+        <a class="btn" href="https://www.etsy.com/shop/CeramicsbyKaro" target="_blank" rel="noopener">Visit the Etsy shop
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 10 L10 4 M5 4 H10 V9"/></svg></a>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul><li><a href="#collection">Landmark tumblers</a></li><li><a href="#studio">Studio pieces</a></li><li><a href="#about">About</a></li></ul>
+      </div>
+      <div>
+        <h4>Follow &amp; contact</h4>
+        <ul>
+          <li><a href="https://www.instagram.com/ceramics_by_karo/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.etsy.com/shop/CeramicsbyKaro" target="_blank" rel="noopener">Etsy</a></li>
+          <li><a href="mailto:hello@example.com">Email</a></li>
+        </ul>
+      </div>
+    </div>
+    <svg class="ridge" viewBox="0 0 1200 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0 64 C120 62 220 58 330 52 S470 40 540 30 S600 16 628 12 L640 15 L652 8 L668 17 C700 26 760 36 860 46 S1060 60 1200 63"/></svg>
+    <div class="small"><span>© <span id="yr"></span> KARO ceramics · Bay Area, California</span><span>Handmade, one at a time.</span></div>
+  </div>
+</footer>
+
+<dialog id="lightbox" aria-label="Piece details">
+  <button class="lb-close" aria-label="Close">×</button>
+  <div class="lb">
+    <div class="lb-img">
+      <img id="lb-main" alt="">
+      <button class="lb-nav prev" aria-label="Previous photo">‹</button>
+      <button class="lb-nav next" aria-label="Next photo">›</button>
+    </div>
+    <div class="lb-body">
+      <h3 id="lb-title"></h3>
+      <p id="lb-text"></p>
+      <div class="lb-thumbs" id="lb-thumbs"></div>
+      <a class="btn" href="https://www.etsy.com/shop/CeramicsbyKaro" target="_blank" rel="noopener">Find it on Etsy
+        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 10 L10 4 M5 4 H10 V9"/></svg></a>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  // ---- content: edit here to add/swap pieces ----
+  const sets = {
+    tam:   { title: "Mt. Tamalpais", text: "The Sleeping Lady's ridgeline, carved freehand around a white porcelain tumbler with a dark glazed interior.",
+             photos: ["tam-sunset-hero", "tam-studio-1", "tam-studio-2", "tam-studio-cup", "tam-sunset-4"] },
+    muir:  { title: "Muir Woods", text: "Three coast redwoods rising from the forest floor, with a soft celadon interior.",
+             photos: ["muirwoods-1", "muirwoods-2", "muirwoods-3"] },
+    tahoe: { title: "Lake Tahoe", text: "Sierra peaks above the water. New photos coming soon. In the meantime, find it on Etsy.", photos: [] },
+    ggb:   { title: "Golden Gate", text: "The towers and cables of the bridge. New photos coming soon. In the meantime, find it on Etsy.", photos: [] },
+  };
+  const studio = [
+    ["moon-jar-ocean", "Moon jar", "Ocean glaze"],
+    ["brushstroke-vase", "Brushstroke vase", "Cobalt on white porcelain"],
+    ["crackle-bowl", "Crackle bowl", "White crackle glaze"],
+    ["bottle-vase-ocean", "Bottle vase", "Ocean glaze"],
+    ["speckled-vase", "Speckled vase", "Speckled stoneware"],
+    ["cobalt-craspedia", "Cobalt cylinder", "Deep blue glaze"],
+    ["brushstroke-pair", "Brushstroke pair", "Cobalt on white porcelain"],
+    ["ikebana-dish", "Ikebana dish", "Satin white"],
+    ["bud-vase-ocean", "Bud vase", "Ocean glaze"],
+    ["speckled-creamer", "Creamer", "Speckled stoneware"],
+    ["cup-pair", "Cups", "Satin white"],
+    ["moon-jar-ocean-2", "Moon jar, detail", "Ocean glaze"],
+  ];
+
+  // ---- gallery ----
+  const g = document.getElementById("gallery");
+  studio.forEach(([file, name, glaze], i) => {
+    const b = document.createElement("button");
+    b.className = "reveal";
+    b.innerHTML = `<img src="images/${file}.jpg" alt="${name}, ${glaze.toLowerCase()}" loading="lazy"><span class="cap">${name} · ${glaze}</span>`;
+    b.onclick = () => openBox({ title: name, text: glaze + ". One-off studio piece. Check Etsy for availability.", photos: studio.map(s => s[0]) }, i);
+    g.appendChild(b);
+  });
+
+  // ---- lightbox ----
+  const dlg = document.getElementById("lightbox"), main = document.getElementById("lb-main"),
+        thumbs = document.getElementById("lb-thumbs");
+  let cur = null, idx = 0;
+  function show(i) {
+    if (!cur.photos.length) return;
+    idx = (i + cur.photos.length) % cur.photos.length;
+    main.src = `images/${cur.photos[idx]}.jpg`;
+    main.alt = cur.title;
+    [...thumbs.children].forEach((t, n) => t.setAttribute("aria-current", n === idx));
+  }
+  function openBox(set, start = 0) {
+    cur = set;
+    document.getElementById("lb-title").textContent = set.title;
+    document.getElementById("lb-text").textContent = set.text;
+    thumbs.innerHTML = "";
+    const many = set.photos.length > 1;
+    dlg.querySelectorAll(".lb-nav").forEach(n => n.hidden = !many);
+    if (many) set.photos.forEach((p, n) => {
+      const t = document.createElement("button");
+      t.innerHTML = `<img src="images/${p}.jpg" alt="">`;
+      t.onclick = () => show(n);
+      thumbs.appendChild(t);
+    });
+    dlg.querySelector(".lb-img").hidden = !set.photos.length;
+    dlg.querySelector(".lb").style.gridTemplateColumns = set.photos.length ? "" : "1fr";
+    show(start);
+    dlg.showModal();
+  }
+  document.querySelectorAll(".landmark").forEach(el => el.onclick = () => openBox(sets[el.dataset.set]));
+  dlg.querySelector(".lb-close").onclick = () => dlg.close();
+  dlg.querySelector(".prev").onclick = () => show(idx - 1);
+  dlg.querySelector(".next").onclick = () => show(idx + 1);
+  dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+  dlg.addEventListener("keydown", e => { if (e.key === "ArrowLeft") show(idx - 1); if (e.key === "ArrowRight") show(idx + 1); });
+
+  // ---- header, menu, reveal ----
+  const header = document.querySelector("header");
+  addEventListener("scroll", () => header.classList.toggle("scrolled", scrollY > 10), { passive: true });
+  const tog = document.querySelector(".menu-toggle"), menu = document.getElementById("menu");
+  tog.onclick = () => { const o = menu.classList.toggle("open"); tog.setAttribute("aria-expanded", o); };
+  menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => { menu.classList.remove("open"); tog.setAttribute("aria-expanded", false); }));
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px" });
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+  document.getElementById("yr").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

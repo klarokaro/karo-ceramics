@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="#2b2a27" stroke-width="2.9" stroke-linejoin="miter">
+  <title>KARO ceramics</title>
+  <rect x="1.75" y="1.75" width="96.5" height="96.5" stroke-width="3.5"/>
+  <path d="M16.9 18.4 H43.9 M30.4 18.4 L17.6 43.1 M30.4 18.4 L43.1 43.1"/>
+  <path d="M55.7 43.1 V18.4 H85.9 V32.4 H55.7 M77.5 32.4 L82.7 43.1"/>
+  <path d="M17.6 80.4 L30.4 53.7 L43.1 80.4 M22.7 69.6 H38.1"/>
+  <circle cx="70.8" cy="67.6" r="13.6" stroke-width="2.3"/>
+</svg>
