@@ -111,11 +111,6 @@
   .landmark .sub { font-size: 14px; color: var(--ink-soft); margin: 4px 0 0; }
   symbol path { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 
-  /* coming-soon placeholder tile */
-  .photo.soon { display: grid; place-items: center; background:
-      radial-gradient(ellipse at 50% 120%, var(--paper-deep), transparent 60%), var(--birch); }
-  .photo.soon .icon { width: 62%; height: auto; color: var(--ink-soft); opacity: .7; }
-  .photo.soon span { position: absolute; bottom: 18px; left: 0; right: 0; text-align: center; font: italic 300 16px var(--serif); color: var(--ink-soft); }
   /* temporary marker for photos to be reshot — delete this rule when final photos are in */
   .placeholder-tag { position: absolute; top: 12px; left: 12px; background: rgba(241,236,227,.9); font: 500 10px/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; padding: 7px 9px; border-radius: 2px; color: var(--ink-soft); }
 
@@ -221,7 +216,7 @@
   <symbol id="logo" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="2.9"><rect x="1.75" y="1.75" width="96.5" height="96.5" stroke-width="3.5"/><path d="M16.9 18.4 H43.9 M30.4 18.4 L17.6 43.1 M30.4 18.4 L43.1 43.1 M55.7 43.1 V18.4 H85.9 V32.4 H55.7 M77.5 32.4 L82.7 43.1 M17.6 80.4 L30.4 53.7 L43.1 80.4 M22.7 69.6 H38.1"/><circle cx="70.8" cy="67.6" r="13.6" stroke-width="2.3"/></g></symbol>
   <symbol id="i-tam" viewBox="0 0 120 60"><path d="M3 50 C14 48 20 45 28 41 S40 34 46 29 S54 21 58 17 L61 19 L64 15 L68 20 C74 26 82 31 92 37 S108 45 117 48"/></symbol>
   <symbol id="i-redwoods" viewBox="0 0 120 60"><path d="M40 56 V6 M40 12 l-4 4 M40 12 l4 4 M40 19 l-6 6 M40 19 l6 6 M40 27 l-7 7 M40 27 l7 7 M40 35 l-8 8 M40 35 l8 8 M60 56 V16 M60 21 l-4 4 M60 21 l4 4 M60 28 l-5 5 M60 28 l5 5 M60 36 l-6 6 M60 36 l6 6 M80 56 V2 M80 8 l-4 4 M80 8 l4 4 M80 15 l-6 6 M80 15 l6 6 M80 23 l-7 7 M80 23 l7 7 M80 32 l-8 8 M80 32 l8 8 M24 56 C40 54 70 55 96 56"/></symbol>
-  <symbol id="i-tahoe" viewBox="0 0 120 60"><path d="M3 38 L24 18 L34 27 L50 9 L64 24 L72 18 L90 34 L100 28 L117 38 M3 38 H117 M22 46 q6 -3 12 0 t12 0 M58 46 q6 -3 12 0 t12 0 M38 53 q6 -3 12 0 t12 0"/></symbol>
+  <symbol id="i-tahoe" viewBox="0 0 120 60"><path d="M56 4 C60 3 64 4 67 6 C70 8 72 11 71 15 C73 19 74 24 73 29 C72 34 73 39 71 44 C69 49 67 53 63 56 L61 57 L59 55 C56 54 54 51 53 47 C52 44 50 43 50 41 C52 40 52 38 50 37 C49 33 48 29 48 25 C47 20 47 15 49 11 C50 7 53 5 56 4 Z"/></symbol>
   <symbol id="i-ggb" viewBox="0 0 120 60"><path d="M30 50 V6 M36 50 V6 M30 14 H36 M84 50 V6 M90 50 V6 M84 14 H90 M4 38 C14 30 24 18 33 8 C48 44 72 44 87 8 C96 18 106 30 116 38 M45.7 28.3 V48 M52.7 33.3 V48 M60 35 V48 M67.3 33.3 V48 M74.3 28.3 V48 M4 56 q7 -7 14 0 q7 -7 14 0 q7 -7 14 0 q7 -7 14 0 q7 -7 14 0 q7 -7 14 0 q7 -7 14 0 q7 -7 14 0"/></symbol>
 </svg>
 
@@ -245,7 +240,7 @@
       <div>
         <p class="eyebrow">Hand-thrown in the Bay Area</p>
         <h1>Carry the places <em>you love.</em></h1>
-        <p class="lede">Porcelain tumblers carved by hand with the outlines of Northern California's landmarks: the ridge of Mt. Tamalpais, the redwoods of Muir Woods, Lake Tahoe and the Golden Gate.</p>
+        <p class="lede">Porcelain tumblers carved by hand with the outlines of Northern California's landmarks: the ridge of Mt. Tamalpais, the redwoods of Muir Woods, the shoreline of Lake Tahoe and the Golden Gate.</p>
         <div class="ctas">
           <a class="btn" href="https://www.etsy.com/shop/CeramicsbyKaro" target="_blank" rel="noopener">Shop on Etsy
             <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 10 L10 4 M5 4 H10 V9"/></svg></a>
@@ -277,8 +272,8 @@
           <div class="meta"><svg class="icon"><use href="#i-redwoods"/></svg><div><h3>Muir Woods</h3><p class="sub">Coast redwoods</p></div></div>
         </button>
         <button class="landmark reveal" data-set="tahoe">
-          <div class="photo soon"><svg class="icon" viewBox="0 0 120 60"><use href="#i-tahoe"/></svg><span>Photos coming soon</span></div>
-          <div class="meta"><svg class="icon"><use href="#i-tahoe"/></svg><div><h3>Lake Tahoe</h3><p class="sub">Sierra peaks &amp; blue water</p></div></div>
+          <div class="photo"><img src="images/tahoe-1.jpg" alt="Lake Tahoe tumbler carved with the outline of the lake, blue interior" loading="lazy"></div>
+          <div class="meta"><svg class="icon"><use href="#i-tahoe"/></svg><div><h3>Lake Tahoe</h3><p class="sub">The shoreline, traced</p></div></div>
         </button>
         <button class="landmark reveal" data-set="ggb">
           <div class="photo"><img src="images/ggb-1.jpg" alt="Golden Gate tumbler on driftwood at the beach, with the bridge behind it" loading="lazy"></div>
@@ -378,10 +373,11 @@
   // ---- content: edit here to add/swap pieces ----
   const sets = {
     tam:   { title: "Mt. Tamalpais", text: "The Sleeping Lady's ridgeline, carved freehand around a white porcelain tumbler with a dark glazed interior.",
-             photos: ["tam-sunset-hero", "tam-studio-1", "tam-studio-2", "tam-studio-cup", "tam-sunset-4"] },
+             photos: ["tam-sunset-hero", "tam-studio-1", "tam-studio-2", "tam-cup-1", "tam-cup-2", "tam-sunset-4"] },
     muir:  { title: "Muir Woods", text: "Three coast redwoods rising from the forest floor, with a soft celadon interior.",
              photos: ["muirwoods-1", "muirwoods-2", "muirwoods-3"] },
-    tahoe: { title: "Lake Tahoe", text: "Sierra peaks above the water. New photos coming soon. In the meantime, find it on Etsy.", photos: [] },
+    tahoe: { title: "Lake Tahoe", text: "The whole shoreline of the lake, traced as a single carved line, with a deep blue interior.",
+             photos: ["tahoe-1", "tahoe-2", "tahoe-3", "tahoe-4"] },
     ggb:   { title: "Golden Gate", text: "The towers and sweeping cables of the bridge in red, riding on a band of blue fog.",
              photos: ["ggb-1", "ggb-2", "ggb-3"] },
   };
